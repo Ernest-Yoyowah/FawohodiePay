@@ -15,9 +15,7 @@ export default function HomeScreen() {
 
       {/* Top Illustration */}
       <Image
-        source={{
-          uri: "https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGF5fGVufDB8fDB8fHww",
-        }}
+        source={require("../../assets/images/landing-img.jpeg")}
         style={styles.illustration}
       />
 
