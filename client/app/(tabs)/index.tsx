@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
+import { Link } from "expo-router"; // ✅ Use Link instead of useNavigation
 
 export default function HomeScreen() {
   return (
@@ -34,14 +35,38 @@ export default function HomeScreen() {
           manage transactions seamlessly.
         </Text>
 
-        {/* Action Button */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Get Started</Text>
-        </TouchableOpacity>
+        {/* Get Started Button */}
+        <PrimaryButton text="Get Started" onPress={() => {}} />
+
+        {/* Login / Signup Links */}
+        <View style={styles.authLinks}>
+          <Link href="/auth/login" asChild>
+            <TouchableOpacity>
+              <Text style={styles.authText}>
+                Welcome back? <Text style={styles.linkText}>Login</Text>
+              </Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/auth/signup" asChild>
+            <TouchableOpacity>
+              <Text style={styles.authText}>
+                First time here? <Text style={styles.linkText}>Sign up</Text>
+              </Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
       </View>
     </View>
   );
 }
+
+/** 🔥 Reusable Primary Button Component */
+const PrimaryButton = ({ text, onPress }) => (
+  <TouchableOpacity style={styles.button} onPress={onPress}>
+    <Text style={styles.buttonText}>{text}</Text>
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -61,8 +86,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   logo: {
-    width: 90,
-    height: 90,
+    width: 100,
+    height: 100,
     resizeMode: "contain",
     marginBottom: 20,
   },
@@ -83,7 +108,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     backgroundColor: "#F5A623",
     paddingVertical: 14,
-    paddingHorizontal: 100,
+    paddingHorizontal: 40,
     borderRadius: 12,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
@@ -93,6 +118,19 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FFF",
     fontSize: 18,
+    fontWeight: "bold",
+  },
+  authLinks: {
+    marginTop: 20,
+    alignItems: "center",
+  },
+  authText: {
+    fontSize: 14,
+    color: "#B0BEC5",
+    marginVertical: 5,
+  },
+  linkText: {
+    color: "#F5A623",
     fontWeight: "bold",
   },
 });
