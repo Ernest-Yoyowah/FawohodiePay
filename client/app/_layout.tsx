@@ -41,3 +41,5 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+
+//! TODO: Create a new layout.tsx file that extends the RootLayout component and adds a new screen for the + page.
